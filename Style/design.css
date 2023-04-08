@@ -113,6 +113,7 @@ header #logo img{
     background-position: center;
     background-repeat: no-repeat;
     float: left;
+    position: relative;
 }
 
 .philosophy-slider figure div p{
@@ -125,7 +126,7 @@ header #logo img{
     height: 900px;
     font-style: italic;
     z-index: 1;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.3);
 }
 
 @keyframes animate {
