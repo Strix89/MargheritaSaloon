@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <link rel="shortcut icon" href="./images/favicon/fav-fab.png" type="image/x-icon">
     <link rel="stylesheet" href="Style/design.css">
-    <script src="Script/home_script.js"></script>
     <title>Home</title>
 	</head>
 	<body>
@@ -47,8 +46,44 @@
             </figure>
         </div>
         <div class="works">
+            <div class="works-text">
+                <p>Ecco il nostro lavoro..</p>
+            </div>
+            <div class="works-slider">
+                <img class="active" src="Images/Works/work_1.jpg" alt="work_1.jpg">
+                <img src="Images/Works/work_2.jpg" alt="work_2.jpg">
+            </div>
+            <div class="works-buttons">
+                <button class="slider-works-button active">1</button>
+                <button class="slider-works-button ">2</button>
+            </div>
         </div>
+        <script>
+            const slider = document.querySelector(".works-slider");
+            const images = slider.querySelectorAll("img");
+            const buttons = document.querySelectorAll(".slider-works-button");
+            
+            let currentImage = 0;
+            
+            function showImage(index){
+                images.forEach(image => image.classList.remove("active"));
+                buttons.forEach(button => button.classList.remove("active"));
+                images[index].classList.add("active");
+                buttons[index].classList.add("active");
+            }
+            
+            buttons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    currentImage = index;
+                    showImage(currentImage);
+                });
+            })
+            
+            showImage(currentImage);
+        </script>
         <div class="products">
+        </div>
+        <div class="reviews">
         </div>
         <footer>
             <div>
