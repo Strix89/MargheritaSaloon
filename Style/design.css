@@ -8,11 +8,11 @@
 }
 
 header{
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
-    height: 12%;
+    height: 80px;
     padding: 20px 20px;
     padding-top: 0;
     padding-bottom: 0;
@@ -20,6 +20,7 @@ header{
     justify-content: space-between;
     align-items: center;
     display: flex;
+    z-index: 1;
 }
 
 header .right-bar .btnuser{
@@ -86,13 +87,74 @@ header #logo img{
     height: 100%;
 }
 
+.philosophy-slider{
+    overflow: hidden;
+    width: 100%;
+    height: 900px;
+}
+
+.philosophy-slider figure{
+    width: 500%;
+    margin: 0;
+    animation: animate 20s infinite;
+    position: relative;
+}
+
+.philosophy-slider figure div{
+    float: left;
+    width: 20%;
+    position: relative;
+}
+
+.philosophy-slider figure div img{
+    width: 100%;
+    height: 900px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.philosophy-slider figure div p{
+    position: absolute;
+    font-size: 60px;
+    text-align: center;
+    padding: 330px;
+    color: #FFF;
+    width: 100%;
+    height: 900px;
+    font-style: italic;
+    z-index: 1;
+    background: rgba(0,0,0,0.2);
+}
+
+@keyframes animate {
+    0%{left: 0%;}
+    10%{left: 0%;}
+    12%{left: -100%;}
+    22%{left: -100%;}
+    24%{left: -200%;}
+    34%{left: -200%;}
+    36%{left: -300%;}
+    46%{left: -300%;}
+    48%{left: -400%;}
+    58%{left: -400%;}
+    60%{left: -300%;}
+    70%{left: -300%;}
+    72%{left: -200%;}
+    82%{left: -200%;}
+    84%{left: -100%;}
+    94%{left: -100%;}
+    96%{left: 0%;}
+}
+
 footer{
-    position: inherit;
+    position: relative;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
-    height: 6%;
+    height: 50px;
     text-align: center;
     background-color: #183A1D;
     color: white;
@@ -100,5 +162,7 @@ footer{
     display: flex;
     justify-content: center; /* Align horizontal */
     align-items: center;
+    z-index: 1;
+    bottom: 0;
 }
 
