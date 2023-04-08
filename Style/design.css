@@ -12,7 +12,7 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-    height: 80px;
+    height: 90px;
     padding: 20px 20px;
     padding-top: 0;
     padding-bottom: 0;
@@ -120,7 +120,7 @@ header #logo img{
     position: absolute;
     font-size: 60px;
     text-align: center;
-    padding: 360px;
+    padding: 25%;
     color: #FFF;
     width: 100%;
     height: 1024px;
@@ -151,7 +151,7 @@ header #logo img{
 
 .works{
     width: 100%;
-    height: 650px;
+    height: 800px;
     background-color: #E1EEDD;
     position: relative;
     display: flex;
@@ -174,9 +174,9 @@ header #logo img{
     position: relative;
     top: 0;
     left: 0;
-    width: 800px;
-    height: 500px;
-    border: 3px solid #183A1D;
+    width: 60%;
+    height: 640px;
+    border: 3px solid black;
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -188,8 +188,9 @@ header #logo img{
 .works-slider img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     display: none;
+    overflow: hidden;
 }
 
 .works-slider img.active{
@@ -216,6 +217,73 @@ header #logo img{
 .slider-works-button.active{
     background-color: #183A1D;
     color: white;
+}
+
+.products{
+    width: 100%;
+    height: 1000px;
+    background-color: #FEFBE9;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.products-text{
+    width: 500px;
+    height: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-style: italic;
+    padding-top: 30px;
+}
+
+.products-text h2{
+    font-size: 2.4em;
+}
+
+.products-text p{
+    font-size: 1.1em;
+    padding-top: 15px;
+}
+
+.products-images{
+    width: 100%;
+    height: 800px;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.product-image{
+    width: 30%;
+    height: 350px;
+    position: relative;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.product-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.reviews{
+    width: 100%;
+    height: 700px;
+    position: relative;
+    background-color: #E1EEDD;
+}
+
+.rev-slider{
+    display: flex;
+    overflow: hidden;
 }
 
 footer{
