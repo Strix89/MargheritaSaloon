@@ -39,6 +39,15 @@ header .right-bar .btnuser{
     transition: .5s;
 }
 
+header .right-bar .btnuser a{
+    text-decoration: none;
+    color: #FEFBE9;
+}
+
+header .right-bar .btnuser a:hover{
+    color: #183A1D;
+}
+
 
 header .right-bar .btnuser:hover{
     color: #183A1D;
@@ -585,25 +594,48 @@ header #logo img{
     border: 2px solid #183A1D;
 }
 
-.login h1{
+.register-block{
+    height: 120vh;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(180deg, #FEFBE9, #F0A04B);
+}
+
+.register{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    background: #E1EEDD;
+    border-radius: 10px;
+    padding-top: 10px;
+    border: 2px solid #183A1D;
+}
+
+.login h1, 
+.register h1{
     text-align: center;
     padding: 0 0 20px 0;
     border-bottom: 1px solid #183A1D;
     font-style: italic;
 }
 
-.login form{
+.login form, 
+.register form{
     padding: 0 40px;
     box-sizing: border-box;
 }
 
-.login form .txt_field{
+.login form .txt_field, 
+.register form .txt_field{
     position: relative;
     border-bottom: 2px solid #183A1D;
     margin: 30px 0;
 }
 
-.login form .txt_field input{
+.login form .txt_field input,
+.register form .txt_field input{
     width: 100%;
     padding: 0 5px;
     height: 40px;
@@ -613,7 +645,8 @@ header #logo img{
     outline: none;
 }
 
-.login form .txt_field label{
+.login form .txt_field label,
+.register form .txt_field label{
     position: absolute;
     top: 50%;
     left: 5px;
@@ -624,7 +657,8 @@ header #logo img{
     transition: 0.5s;
 }
 
-.login form .txt_field span::before{
+.login form .txt_field span::before, 
+.register form .txt_field span::before{
     content: "";
     position: absolute;
     top: 40px;
@@ -635,7 +669,9 @@ header #logo img{
 }
 
 .login form .txt_field input:focus ~ label,
-.login form .txt_field input:valid ~ label{
+.login form .txt_field input:valid ~ label,
+.register form .txt_field input:focus ~ label,
+.register form .txt_field input:valid ~ label{
     top: -5px;
     left: 0;
     color: #183A1D;
@@ -643,7 +679,9 @@ header #logo img{
 }
 
 .login form .txt_field input:focus ~ span::before,
-.login form .txt_field input:valid ~ span::before{
+.login form .txt_field input:valid ~ span::before,
+.register form .txt_field input:focus ~ span::before,
+.register form .txt_field input:valid ~ span::before{
     width: 100%;
 }
 
@@ -657,7 +695,8 @@ header #logo img{
     text-decoration: underline;
 }
 
-.login input{
+.login input, 
+.register input{
     width: 100%;
     height: 50px;
     border: 2px solid black;
@@ -670,13 +709,15 @@ header #logo img{
     outline: none;
 }
 
-.login input:hover{
+.login input:hover,
+.register input:hover{
     background-color: #183A1D;
     color: #FEFBE9;
     transition: 0.5s;
 }
 
-.login input[type="reset"]{
+.login input[type="reset"],
+.register input[type="reset"]{
     margin-top: 10px;
     margin-bottom: 10px;
 }

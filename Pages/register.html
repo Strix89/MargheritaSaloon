@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <link rel="shortcut icon" href="../Images/favicon/fav-fab.png" type="image/x-icon">
     <link rel="stylesheet" href="../Style/design.css">
-    <title>LoginPage</title>
+    <title>RegisterPage</title>
 	</head>
 	<body>
 		<header>
@@ -21,22 +21,41 @@
                 <button class="btnuser"><a href="./register.html">Sign in</a></button>
 			</div>
         </header>
-        <div class="login-block">
-            <div class="login">
-                <h1>Login</h1>
+        <div class="register-block">
+            <div class="register">
+                <h1>Signin</h1>
                 <form method="post" target="#">
+                    <div class="txt_field">
+                        <input type="text" required>
+                        <span></span>
+                        <label>Nome</label>
+                    </div>
+                    <div class="txt_field">
+                        <input type="text" required>
+                        <span></span>
+                        <label>Cognome</label>
+                    </div>
                     <div class="txt_field">
                         <input type="text" required>
                         <span></span>
                         <label>Username</label>
                     </div>
                     <div class="txt_field">
+                        <input type="tel" maxlength="10" required>
+                        <span></span>
+                        <label>Cellulare (MAX: 10 Cifre)</label>
+                    </div>
+                    <div class="txt_field">
+                        <input type="email" required>
+                        <span></span>
+                        <label>Email</label>
+                    </div>
+                    <div class="txt_field">
                         <input type="password" required>
                         <span></span>
                         <label>Password</label>
                     </div>
-                    <div class="forgot_pass">Forgot Password?</div>
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Register">
                     <input type="reset" value="Reset">
                 </form>
             </div>
