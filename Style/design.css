@@ -39,19 +39,18 @@ header .right-bar .btnuser{
     transition: .5s;
 }
 
-header .right-bar .btnuser a{
-    text-decoration: none;
-    color: #FEFBE9;
-}
-
-header .right-bar .btnuser a:hover{
-    color: #183A1D;
-}
-
-
 header .right-bar .btnuser:hover{
     color: #183A1D;
     background-color: #FEFBE9;
+}
+
+header .right-bar .btnuser a{
+    text-decoration: inherit;
+    color: inherit;
+}
+
+header .right-bar .btnuser a:hover{
+    color: inherit;
 }
 
 header .right-bar{
@@ -720,6 +719,84 @@ header #logo img{
 .register input[type="reset"]{
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+#userpanel{
+    width: 100%;
+}
+
+.panel-block{
+    width: 100%;
+    height: 125vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-actions{
+    width: 100%;
+    height: 65%;
+    background-color: #E1EEDD;
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    overflow: auto;
+    padding: 20px;
+}
+
+.action{
+    width: 300px;
+    height: 100px;
+    font-weight: bolder;
+    font-size: 20px;
+    border: 5px solid #183A1D;
+    color: #183A1D;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.action:hover{
+    background-color: #F0A04B;
+    color: white;
+    transition: 0.2s;
+    border: 5px solid #F0A04B;
+}
+
+.action a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.action a:hover{
+    color: inherit;
+}
+
+.user-info{
+    width: 100%;
+    height: 35%;
+    background-color: white;
+    padding: 40px;
+    overflow: auto;
+}
+
+.user-info h1{
+    font-size: 40px;
+    font-weight: bolder;
+    color: #183A1D;
+    font-style: italic;
+}
+
+.user-info p{
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.user-info p span{
+    font-weight: bolder;
+    color: #183A1D;
 }
 
 footer{
