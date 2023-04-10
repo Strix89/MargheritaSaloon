@@ -700,6 +700,15 @@ header #logo img{
     text-decoration: underline;
 }
 
+.login .forgot_pass a{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.login .forgot_pass a:hover{
+    text-decoration: inherit;
+}
+
 .login input, 
 .register input{
     width: 100%;
@@ -803,6 +812,94 @@ header #logo img{
 .user-info p span{
     font-weight: bolder;
     color: #183A1D;
+}
+
+.works-block{
+    width: 100%;
+    height: 120vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #E1EEDD;
+}
+
+.work-block{
+    width: 95%;
+    height: 1400px;
+    border: 4px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #FEFBE9;
+    margin-top: 30px;
+}
+
+.work-block h1,
+.work-block h2{
+    font-size: 30px;
+    font-weight: bolder;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.work-block h1{
+    color: #F0A04B;
+    text-align: center;
+}
+
+.work-block h2 span{
+    color: #183A1D;
+}
+
+.work-block p{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.work-block hr{
+    background-color: #183A1D;
+    height: 5px;
+}
+
+.works-images{
+    width: 95%;
+    height: 620px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: auto;
+    display: flex;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+}
+
+.work-image{
+    width: 650px;
+    height: 560px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+}
+
+.works-images .work-image:first-child{
+    margin-left: auto;
+}
+
+.works-images .work-image:last-child{
+    margin-right: auto;
+}
+
+
+.work-image img{
+    width: 650px;
+    height: 560px;
+    object-fit: fill;
+    border: 8px solid #F0A04B;
+    border-radius: 10px;
 }
 
 footer{
