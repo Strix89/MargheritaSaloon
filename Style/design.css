@@ -867,7 +867,8 @@ header #logo img{
 }
 
 .work-block hr,
-.rev-block hr{
+.rev-block hr,
+.write-rev hr{
     background-color: #183A1D;
     height: 5px;
 }
@@ -939,6 +940,155 @@ header #logo img{
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.write-rev-block{
+    width: 100%;
+    height: 100vh;
+    background-color: #FEFBE9;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.write-rev{
+    width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    background-color: #E1EEDD;
+    border: 4px solid #183A1D;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.write-rev h1{
+    text-align: center;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 60px;
+}
+
+.write-rev form label{
+    margin-right: 20px;
+    font-size: 30px;
+}
+
+.write-rev div{
+    width: 80%;
+    height: 25%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.write-rev .rev-textarea textarea{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    resize: none;
+    font-size: 18px;
+}
+
+.write-rev .rev-pren select{
+    width: 120px;
+    height: 60px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.write-rev .rev-submit{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.write-rev .rev-submit input{
+    width: 170px;
+    height: 80px;
+    border-radius: 30px;
+    font-size: 20px;
+    border: 4px solid #183A1D;
+    font-weight: bolder;
+}
+
+.write-rev .rev-submit input:hover{
+    border: 4px solid white;
+    background-color: #F0A04B;
+    color: white;
+}
+
+.write-rev .stars-rev{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.write-rev .stars-rev .rating{
+    width: 80%;
+    height: auto;
+}
+
+.rating{
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+    text-transform: capitalize;
+    padding: 0 50px 8%;
+    color: gray;
+}
+    
+.rating label{
+    float: right;
+    padding: 0;
+    font-size: 50px;
+    cursor: pointer;
+}   
+
+.rating label::before {
+    content: "\2606";
+    padding-bottom: 8px;
+    display: inline-block;
+    transition: 0.2s;
+} 
+
+.rating span{
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    height: 20px;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: 0.15s ease-out;
+    pointer-events: none;
+    letter-spacing: -2px;
+    transform: translateY(-50%);
+} 
+  
+.rating label:hover span{
+    opacity: 1;
+    transform: none;
+    letter-spacing: 0;
+}
+
+.rating input:checked ~ label::before{
+    content: "\2605";
+    color: orange;
+    filter: drop-shadow(0 0 4px);
+    transform: rotate(.2turn);
+    transition-delay: calc(0.1 * attr(data-idx integer));
 }
 
 footer{

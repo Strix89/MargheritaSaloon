@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <link rel="shortcut icon" href="../Images/favicon/fav-fab.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Style/design.css">
+    <title>WriteReviews</title>
+	</head>
+	<body>
+		<header>
+            <div class="left-bar">
+				<a href="./info.html">Informazioni</a>
+				<a href="./contacts.html">Contatti</a>
+			</div>
+            <div id="logo">
+                <a href="../home.html"><img src="../Images/Logo.png"></a>
+			</div>
+            <div class="right-bar">
+                <button class="btnuser" id="userpanel"><a href="./clientPanel.html">UserUsername</a></button>
+			</div>
+        </header>
+        <div class="write-rev-block">
+            <div class="write-rev">
+                <h1>Raccontaci!</h1>
+                <hr>
+                <form method="post" action="#">
+                    <div class="rev-pren">
+                        <label for="Prenotazione">Scegli la prenotazione di cui vuoi scrivere la recensione: </label>
+                        <select id="sceltaPren" name="sceltaPren">
+                            <option value="#IDPREN">Prenotazione1</option>
+                            <option value="#IDPREN">Prenotazione2</option>
+                            <option value="#IDPREN">Prenotazione3</option>
+                        </select>
+                    </div>
+                    <div class="stars-rev">
+                        <div class="rating">
+                            <input type='radio' hidden name='rate' id='rating-opt5' data-idx='0'>	
+                            <label for='rating-opt5'><span>Very satisfied</span></label>
+                       
+                            <input type='radio' hidden name='rate' id='rating-opt4' data-idx='1'>
+                            <label for='rating-opt4'><span>Somewhat satisfied</span></label>
+                       
+                            <input type='radio' hidden name='rate' id='rating-opt3' data-idx='2'>
+                            <label for='rating-opt3'><span>Neutral</span></label>
+                       
+                            <input type='radio' hidden name='rate' id='rating-opt2' data-idx='3'>
+                            <label for='rating-opt2'><span>Dissatisfied</span></label>
+                       
+                            <input type='radio' hidden name='rate' id='rating-opt1' data-idx='4'>
+                            <label for='rating-opt1'><span>Very Dissatisfied</span></label>
+                          </div>
+                    </div>
+                    <div class="rev-textarea">
+                        <textarea name="Recensione" id="Recensione" cols="50" rows="10" placeholder="Scrivi qui la tua recensione"></textarea>
+                    </div>
+                    <div class="rev-submit">
+                        <input type="submit" value="Invia Recensione">
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <div>
+                <p>© 2014-2023 MargheritaSaloon.com is a registered trademark. All rights reserved. Reproduction in whole or in part without permission is prohibited.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>
