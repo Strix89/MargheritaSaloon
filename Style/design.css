@@ -612,6 +612,10 @@ header #logo img{
     border: 2px solid #183A1D;
 }
 
+.login p{
+    margin-bottom: 20px;
+}
+
 .login h1, 
 .register h1{
     text-align: center;
@@ -649,11 +653,12 @@ header #logo img{
     position: absolute;
     top: 50%;
     left: 5px;
-    color: white;
+    color: rgb(92, 92, 92);
     transform: translateY(-50%);
     font-size: 20px;
     pointer-events: none;
     transition: 0.5s;
+    font-weight: bold;
 }
 
 .login form .txt_field span::before, 
@@ -675,6 +680,7 @@ header #logo img{
     left: 0;
     color: #183A1D;
     font-size: 15px;
+    font-weight: normal;
 }
 
 .login form .txt_field input:focus ~ span::before,
