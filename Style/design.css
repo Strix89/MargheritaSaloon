@@ -1170,3 +1170,115 @@ footer{
     z-index: 1;
     bottom: 0;
 }
+
+.row-data-ora-operatore {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.row-data-ora-operatore > div {
+    flex: 1;
+}
+
+.chooseFile {
+    margin-top: 0px;
+    background-color: #E1EEDD;
+    border: 4px solid #183A1D;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chooseFile:hover {
+    border: 4px solid white;
+    background-color: #F0A04B;
+    color: white;
+}
+#prezzoTratement-text {
+    font-size: large;
+}
+#nomeTratement-text {
+    font-size: large;
+}
+#nomeProdotto-text {
+    font-size: large;
+}
+#prezzoProdotto-text {
+    font-size: large;
+}
+#adsTitolo-text {
+    font-size: large;
+}
+.table-richieste {
+    width: 100%;
+    border: 5px solid #183A1D;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+tr.border_bottom th {
+    font-size: large;
+    border-bottom: 3px solid #183A1D;
+    border-radius: 30px;
+    
+}
+tr.border_bottom td {
+    border-bottom: 3px solid #183A1D;
+    border-right: 3px solid #183A1D;
+    border-radius: 20px;
+    
+}
+.btn-accept {
+    margin: auto;
+    margin-top: 0px;
+    background-color: transparent; 
+    border-left: 4px solid #183A1D;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.btn-accept:hover {
+    margin: auto;
+    border: 4px solid white;
+    background-color: #F0A04B;
+    color: white;
+}
+.btn-reject {
+    margin: auto;
+    margin-top: 0px;
+    background-color: transparent;
+    border-left: 4px solid #183A1D;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.btn-reject:hover {
+    margin: auto;
+    border: 4px solid white;
+    background-color: #F0A04B;
+    color: white;
+}
+#titolo-richieste {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+#riferimento-option {
+    font-size: large;
+}
+#trattamento-option {
+    font-size: large;
+}
+#operatore-option {
+    font-size: large;
+}
+#orario {
+    font-size: large;
+}
+#data {
+    font-size: large;
+}

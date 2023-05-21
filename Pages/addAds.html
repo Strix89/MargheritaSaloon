@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <link rel="shortcut icon" href="../Images/favicon/fav-fab.png" type="image/x-icon">
     <link rel="stylesheet" href="../Style/design.css">
-    <title>Book</title>
+    <title>AddAds</title>
 	</head>
 	<body>
 		<header>
@@ -22,7 +22,7 @@
         </header>
         <div class="write-rev-block">
             <div class="write-rev">
-                <h1>Prenota</h1>
+                <h1>Nuovo annunco</h1>
                 <hr>
                 <form method="post" action="#">
                     <div class="row-data-ora-operatore">
@@ -30,32 +30,19 @@
                         <label for="data">Data:</label>
                         <input type="date" id="data" name="data" required>
                     </div>
-                    <div class="orario-rev">
-                        <label for="orario">Orario:</label>
-                        <input type="time" id="orario" name="orario" required>
+                    <div class="riferimento-rev">
+                        <label for="riferimento">Titolo:</label>
+                        <textarea style="resize:none" name="adsTitolo-text" id="adsTitolo-text" cols="15" rows="1" placeholder="Titolo"></textarea>
                     </div>
                     </div>
-                    <div class="row-data-ora-operatore">
-                    <div class="trattamento-rev">
-                        <label for="trattamento">Trattamento:</label>
-                        <select id="trattamento-option" name="trattamento" required>
-                            <option value="trattamento1">Trattamento 1</option>
-                            <option value="trattamento2">Trattamento 2</option>
-                            <option value="trattamento3">Trattamento 3</option>
-                        </select>
-                    </div>
-                    <div class="operatore-rev">
-                        <label for="operatore">Operatore:</label>
-                        <select id="operatore-option" name="operatore" required>
-                            <option value="operatore1">Operatore 1</option>
-                            <option value="operatore2">Operatore 2</option>
-                            <option value="operatore3">Operatore 3</option>
-                        </select>
-                    </div>
+                    <div class="rev-textarea">
+                        <textarea name="Recensione" id="Recensione" cols="50" rows="10" placeholder="Descrizione"></textarea>
                     </div>
                     <div class="rev-submit">
-                        <input type="submit" value="Invia Recensione">
-                        <input type="reset" value="Reset">
+                            <input type="file" id="myFile" name="filename" hidden/>
+                            <label class="chooseFile" for="myFile">Choose File</label>
+                            <input type="submit" value="Posta">
+                          </form>
                     </div>
                 </form>
             </div>
