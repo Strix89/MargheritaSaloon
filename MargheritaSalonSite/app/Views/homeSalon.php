@@ -3,9 +3,9 @@
 	<head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    <link rel="shortcut icon" href="./Images/favicon/fav-fab.png" type="image/x-icon">
-    <link rel="stylesheet" href="Style/design.css">
-    <title>Home</title>
+    <link rel="shortcut icon" href="assets/logo/fav-fab.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="assets/css/design.css">
+    <title><?= esc($title) ?></title>
 	</head>
 	<body>
 		<header>
@@ -14,7 +14,7 @@
 				<a href="./Pages/contacts.html">Contatti</a>
 			</div>
             <div id="logo">
-                <a href="home.html"><img src="Images/Logo.png"></a>
+                <a href="home.html"><img src="assets/logo/Logo.png"></a>
 			</div>
 			<div class="right-bar">
                 <button class="btnuser"><a href="./Pages/login.html">Login</a></button>
