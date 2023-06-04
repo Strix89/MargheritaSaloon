@@ -26,11 +26,11 @@ class Database extends Config
      */
     public array $default = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => '',
-        'password' => '',
-        'database' => '',
-        'DBDriver' => 'MySQLi',
+        'hostname' => 'localhost:8080',
+        'username' => 'postgres',
+        'password' => 'password1234',
+        'database' => 'Marcony_Saloon',
+        'DBDriver' => 'Postgre',
         'DBPrefix' => '',
         'pConnect' => false,
         'DBDebug'  => true,
@@ -41,7 +41,7 @@ class Database extends Config
         'compress' => false,
         'strictOn' => false,
         'failover' => [],
-        'port'     => 3306,
+        'port'     => 5432,
     ];
 
     /**
