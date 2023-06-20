@@ -7,7 +7,11 @@
                 <a href="/"><img src="assets/logo/Logo.png"></a>
 			</div>
 			<div class="right-bar">
-                <button class="btnuser"><a href="/login">Login</a></button>
-                <button class="btnuser"><a href="/signup">Sign Up</a></button>
+				<?php if(null === session('user')): ?>
+                	<button class="btnuser"><a href="/login">Login</a></button>
+                	<button class="btnuser"><a href="/signup">Sign Up</a></button>
+				<?php else: ?>
+					<button class="btnuser" id="userpanel"><a href="/userdashboard"><?= session('user')["Username"] ?></a></button>
+				<?php endif; ?>
 			</div>
 </header>

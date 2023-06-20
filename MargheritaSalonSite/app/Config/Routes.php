@@ -36,11 +36,15 @@ $routes->add('/forgot', 'HomeController::forgot');
 $routes->add('/info', 'HomeController::info');
 $routes->add('/contacts', 'HomeController::contacts');
 
+$routes->add('/userdashboard', 'DashboardController::index');
+$routes->add('/logout', 'DashboardController::logout');
+
 $routes->get('/login', 'HomeController::login');
 $routes->get('/signup', 'HomeController::signup');
 
 $routes->post('/login', 'HomeController::do_login');
 $routes->post('/signup', 'HomeController::do_signup');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

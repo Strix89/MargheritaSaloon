@@ -8,17 +8,17 @@
                 <h1>Login</h1>
                 <?php if(isset($error)) { ?>
                     <div class="error-box">
-                        <p class="error-message"><?= $error ?></p>
+                        <p class="error-message"><?= $error; ?></p>
                     </div>
                 <?php } ?>
                 <form method="post" target="_self" action="login">
                     <div class="txt_field">
-                        <input type="text" name="username" value=" <?php if(isset($username)) { echo $username; } ?>" required>
+                        <input type="text" name="username" value="<?php if(isset($username)) { echo $username; }?>" required>
                         <span></span>
-                        <label>Username</label>
+                        <label>Username o Email</label>
                     </div>
                     <div class="txt_field">
-                        <input type="password" name="psw" value=" <?php if(isset($password)) { echo $password; } ?>" required>
+                        <input type="password" name="psw" required>
                         <span></span>
                         <label>Password</label>
                     </div>

@@ -53,8 +53,8 @@ class HomeController extends BaseController
     public function do_login(){
         $user = new UserModel();
         
-        $username = $this->request->getPost('username');
-        $password = $this->request->getPost('psw');
+        $username = trim($this->request->getPost('username'));
+        $password = trim($this->request->getPost('psw'));
 
         $result = $user->where('Username', $username)->first();
         
@@ -64,12 +64,13 @@ class HomeController extends BaseController
 
         if(isset($result)){
             if(password_verify($password, $result['PSW'])){
-                
+                $this->session->set('user', $result);
+                return view('/layouts/loading', ['title' => "Loading"]);
             } else {
-                return view("/layouts/login", ['title' => "Login", 'error' => "Password errata", "username" => $username, "password" => $password]);
+                return view("/layouts/login", ['title' => "Login", 'error' => "Password errata!", "username" => $username, "password" => $password]);
             }
         } else{
-            return view("/layouts/login", ['title' => "Login", 'error' => "Username/email o password errati", "username" => $username, "password" => $password]);
+            return view("/layouts/login", ['title' => "Login", 'error' => "Username/Email o password errati!", "username" => $username, "password" => $password]);
         }  
     }
 
@@ -78,6 +79,47 @@ class HomeController extends BaseController
     }
 
     public function do_signup(){
+        $user = new UserModel();
+
+        $username = trim($this->request->getPost('username'));
+        $email = trim($this->request->getPost('email'));
+        $name = ucfirst(strtolower(trim($this->request->getPost('name'))));
+        $surname = ucfirst(strtolower(trim($this->request->getPost('surname'))));
+        $phone = trim($this->request->getPost('phone'));
+        $password = trim($this->request->getPost('psw'));
+        $confirm_password = trim($this->request->getPost('psw_confirm'));
+
+        if($password != $confirm_password){
+            return view("/layouts/register", ["title" => "SignUp", "error" => "Le password non coincidono!", "username" => $username, "email" => $email, "name" => $name, "surname" => $surname, "phone" => $phone]);
+        }
+
+        $password = password_hash($password, PASSWORD_BCRYPT);
+
+        $data = [
+            'Nome' => $name,
+            'Cognome' => $surname,
+            'Email' => $email,
+            'Username' => $username,
+            'PSW' => $password,
+            'Telefono' => $phone,
+            'Tipologia' => false
+        ];
+
+        try {
+            $result = $user->insert($data);
+            $this->session->set('user', $data);
+            return view("/layouts/loading", ["title" => "Loading"]);
+        } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            if(strpos($e->getMessage(), "Email")) {
+                return view("/layouts/register", ["title" => "SignUp", "error" => "Email già utilizzata! Sei già registrato?", "username" => $username, "name" => $name, "surname" => $surname, "phone" => $phone]);
+            } else if (strpos($e->getMessage(), "Username")) {
+                return view("/layouts/register", ["title" => "SignUp", "error" => "Username già utilizzato! Sei già registrato?", "email" => $email, "name" => $name, "surname" => $surname, "phone" => $phone]);
+            } else if (strpos($e->getMessage(), "Telefono")) {
+                return view("/layouts/register", ["title" => "SignUp", "error" => "Telefono già utilizzato! Sei già registrato?", "email" => $email, "name" => $name, "surname" => $surname, "username" => $username]);
+            } else {
+                return view("/layouts/register", ["title" => "SignUp", "error" => "Errore durante la registrazione!", "username" => $username, "email" => $email, "name" => $name, "surname" => $surname, "phone" => $phone]);
+            }
+        }
     }
 
     public function info(){
