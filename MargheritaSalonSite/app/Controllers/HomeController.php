@@ -51,27 +51,38 @@ class HomeController extends BaseController
     }
 
     public function do_login(){
+        helper(['form']);
+
         $user = new UserModel();
-        
-        $username = trim($this->request->getPost('username'));
-        $password = trim($this->request->getPost('psw'));
 
-        $result = $user->where('Username', $username)->first();
+        $rules = [
+            'username' => 'required',
+            'psw' => 'required|min_length[6]|max_length[20]'
+        ];
         
-        if(!isset($result)){
-            $result = $user->where('Email', $username)->first();
-        } 
+        if($this->validate($rules)){
+            $username = trim($this->request->getPost('username'));
+            $password = trim($this->request->getPost('psw'));
 
-        if(isset($result)){
-            if(password_verify($password, $result['PSW'])){
-                $this->session->set('user', $result);
-                return view('/layouts/loading', ['title' => "Loading"]);
+            $result = $user->where('Username', $username)->first();
+        
+            if(!isset($result)){
+                $result = $user->where('Email', $username)->first();
+            }    
+
+            if(isset($result)){
+                if(password_verify($password, $result['PSW'])){
+                    $this->session->set('user', $result);
+                    return view('/layouts/loading', ['title' => "Loading"]);
+                } else {
+                    return view("/layouts/login", ['title' => "Login", 'error' => "Password errata!", "username" => $username, "password" => $password]);
+                }
             } else {
-                return view("/layouts/login", ['title' => "Login", 'error' => "Password errata!", "username" => $username, "password" => $password]);
+                return view("/layouts/login", ['title' => "Login", 'error' => "Username/Email o password errati!", "username" => $username, "password" => $password]);
             }
-        } else{
-            return view("/layouts/login", ['title' => "Login", 'error' => "Username/Email o password errati!", "username" => $username, "password" => $password]);
-        }  
+        } else {
+            return view("/layouts/login", ['title' => "Login", 'error' => implode("<br>",$this->validator->getErrors())]);
+        }
     }
 
     public function signup(){
@@ -79,46 +90,79 @@ class HomeController extends BaseController
     }
 
     public function do_signup(){
+        helper(['form']);
+
         $user = new UserModel();
-
-        $username = trim($this->request->getPost('username'));
-        $email = trim($this->request->getPost('email'));
-        $name = ucfirst(strtolower(trim($this->request->getPost('name'))));
-        $surname = ucfirst(strtolower(trim($this->request->getPost('surname'))));
-        $phone = trim($this->request->getPost('phone'));
-        $password = trim($this->request->getPost('psw'));
-        $confirm_password = trim($this->request->getPost('psw_confirm'));
-
-        if($password != $confirm_password){
-            return view("/layouts/register", ["title" => "SignUp", "error" => "Le password non coincidono!", "username" => $username, "email" => $email, "name" => $name, "surname" => $surname, "phone" => $phone]);
-        }
-
-        $password = password_hash($password, PASSWORD_BCRYPT);
-
-        $data = [
-            'Nome' => $name,
-            'Cognome' => $surname,
-            'Email' => $email,
-            'Username' => $username,
-            'PSW' => $password,
-            'Telefono' => $phone,
-            'Tipologia' => false
+        $rules = [
+            'username' => 'required|min_length[3]|max_length[20]',
+            'email' => 'required|min_length[6]|max_length[50]|valid_email',
+            'name' => 'required|alpha',
+            'surname' => 'required|alpha',
+            'phone' => 'required|regex_match[/^[0-9]{10}$/]',
+            'psw' => 'required|min_length[6]|max_length[20]',
+            'psw_confirm' => 'required|min_length[6]|max_length[20]'
         ];
 
-        try {
-            $result = $user->insert($data);
-            $this->session->set('user', $data);
-            return view("/layouts/loading", ["title" => "Loading"]);
-        } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
-            if(strpos($e->getMessage(), "Email")) {
-                return view("/layouts/register", ["title" => "SignUp", "error" => "Email già utilizzata! Sei già registrato?", "username" => $username, "name" => $name, "surname" => $surname, "phone" => $phone]);
-            } else if (strpos($e->getMessage(), "Username")) {
-                return view("/layouts/register", ["title" => "SignUp", "error" => "Username già utilizzato! Sei già registrato?", "email" => $email, "name" => $name, "surname" => $surname, "phone" => $phone]);
-            } else if (strpos($e->getMessage(), "Telefono")) {
-                return view("/layouts/register", ["title" => "SignUp", "error" => "Telefono già utilizzato! Sei già registrato?", "email" => $email, "name" => $name, "surname" => $surname, "username" => $username]);
-            } else {
-                return view("/layouts/register", ["title" => "SignUp", "error" => "Errore durante la registrazione!", "username" => $username, "email" => $email, "name" => $name, "surname" => $surname, "phone" => $phone]);
+        if($this->validate($rules)) {
+            $username = trim($this->request->getPost('username'));
+            $email = trim($this->request->getPost('email'));
+            $name = ucfirst(strtolower(trim($this->request->getPost('name'))));
+            $surname = ucfirst(strtolower(trim($this->request->getPost('surname'))));
+            $phone = trim($this->request->getPost('phone'));
+            $password = trim($this->request->getPost('psw'));
+            $confirm_password = trim($this->request->getPost('psw_confirm'));
+
+            if($password != $confirm_password){
+                return view("/layouts/register", ["title" => "SignUp", "error" => "Le password non coincidono!", "username" => $username, "email" => $email, "name" => $name, "surname" => $surname, "phone" => $phone]);
             }
+
+            $password = password_hash($password, PASSWORD_BCRYPT);
+
+            $data = [
+                'Nome' => $name,
+                'Cognome' => $surname,
+                'Email' => $email,
+                'Username' => $username,
+                'PSW' => $password,
+                'Telefono' => $phone,
+                'Tipologia' => false,
+            ];
+
+            try {
+                $result = $user->insert($data);
+                $this->session->set('user', $data);
+                $emailValidator = \Config\Services::email();
+                $emailValidator->setFrom("margheritasalon@gmail.com", "Ciao ". $username);
+                $emailValidator->setTo($email);
+                $emailValidator->setSubject("Benvenuto al Margherita Salon");
+                $emailValidator->setMessage("
+                Caro/Cara " . $name . " " . $surname . ",<br><br>
+
+                Benvenuto/a al nostro salone! Siamo felici di averti come nuovo/a cliente e ti ringraziamo per aver scelto i nostri servizi.<br>             
+                Con la tua registrazione al nostro sito, ora hai accesso a una serie di funzionalità esclusive, tra cui la prenotazione online dei nostri servizi e l'accesso alla visualizzazione dei nostri prodotti migliori e agli annunci.<br>               
+                Ti ricordiamo che il nostro salone offre una vasta gamma di servizi di alta qualità, tra cui tagli di capelli, acconciature, trattamenti per capelli, colorazioni e molto altro ancora. Siamo certi che troverai il servizio perfetto per soddisfare le tue esigenze.<br>
+                Non esitare a contattarci se hai domande o necessiti di assistenza. Il nostro team di professionisti è sempre a tua disposizione per offrirti il miglior servizio possibile.<br>
+                Grazie ancora per aver scelto il nostro salone di parruccheria e ti auguriamo una piacevole esperienza con noi!<br><br>
+                
+                Cordiali saluti,<br>
+                Il team del Margherita Salon ;)
+                ");
+                $emailValidator->send();
+                $emailValidator->printDebugger(['headers']);
+                return view("/layouts/loading", ["title" => "Loading"]);
+            } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+                if(strpos($e->getMessage(), "Email")) {
+                    return view("/layouts/register", ["title" => "SignUp", "error" => "Email già utilizzata! Sei già registrato?", "username" => $username, "name" => $name, "surname" => $surname, "phone" => $phone]);
+                } else if (strpos($e->getMessage(), "Username")) {
+                    return view("/layouts/register", ["title" => "SignUp", "error" => "Username già utilizzato! Sei già registrato?", "email" => $email, "name" => $name, "surname" => $surname, "phone" => $phone]);
+                } else if (strpos($e->getMessage(), "Telefono")) {
+                    return view("/layouts/register", ["title" => "SignUp", "error" => "Telefono già utilizzato! Sei già registrato?", "email" => $email, "name" => $name, "surname" => $surname, "username" => $username]);
+                } else {
+                    return view("/layouts/register", ["title" => "SignUp", "error" => "Errore durante la registrazione!", "username" => $username, "email" => $email, "name" => $name, "surname" => $surname, "phone" => $phone]);
+                }
+            }
+        } else {
+            return view("/layouts/register", ["title" => "SignUp", "error" => implode("<br>", $this->validator->getErrors())]);
         }
     }
 
