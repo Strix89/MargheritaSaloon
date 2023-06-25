@@ -4,7 +4,7 @@
 				<a href="/contacts">Contatti</a>
 			</div>
             <div id="logo">
-                <a href="/"><img src="assets/logo/Logo.png"></a>
+                <a href="/"><img src="<?php echo base_url();?>assets/logo/Logo.png"></a>
 			</div>
 			<div class="right-bar">
 				<?php if(null === session('user')): ?>

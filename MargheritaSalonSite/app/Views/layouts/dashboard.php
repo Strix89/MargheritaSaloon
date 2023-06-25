@@ -5,14 +5,14 @@
 		<?= view("templates/header") ?>
         <div class="panel-block">
             <div class="user-actions">
-                <?php if(session("user")["Tipologia"] == true): ?>
+                <?php if(session("user")["Tipologia"] === "t"): ?>
                     <button class="action"><a href="./addWork.html">LAVORI</a></button>
-                    <button class="action"><a href="./addAds.html">ANNUNCI</a></button>
+                    <button class="action"><a href="./announcements">ANNUNCI</a></button>
                     <button class="action"><a href="./addProduct.html">PRODOTTI</a></button>
                     <button class="action"><a href="./personalCalendar.html">CALENDARIO PERSONALE</a></button>
                     <button class="action"><a href="./salonCalendar.html">CALENDARIO DEL SALONE</a></button>
                     <button class="action"><a href="./addTratement.html">TRATTAMENTI DEL SALONE</a></button>
-                    <button class="action"><a href="./resetPwd.html">RESETTA LA PASSWORD</a></button>
+                    <button class="action"><a href="/resetpsw">RESETTA LA PASSWORD</a></button>
                     <button class="action"><a href="/logout">LOGOUT</a></button>
                 <?php else: ?>
                     <button class="action"><a href="./worksPage.html">VEDI LAVORI DEL SALON</a></button>
@@ -22,7 +22,7 @@
                     <button class="action"><a href="./writeRev.html">SCRIVI UNA RECENSIONE</a></button>
                     <button class="action"><a href="./salonCalendar.html">CALENDARIO DEL SALONE</a></button>
                     <button class="action"><a href="./makeRes.html">EFFETTUA UNA PRENOTAZIONE</a></button>
-                    <button class="action"><a href="./resetPwd.html">RESETTA LA PASSWORD</a></button>
+                    <button class="action"><a href="/resetpsw">RESETTA LA PASSWORD</a></button>
                     <button class="action"><a href="/logout">LOGOUT</a></button>
                 <?php endif; ?>
             </div>
@@ -33,10 +33,10 @@
                     <span>Telefono:</span> <?= session("user")["Telefono"]; ?><br>
                     <span>Username:</span> <?= session("user")["Username"]; ?>
                 </p>
-                <?php if(session("user")["Tipologia"] == true): ?>
+                <?php if(session("user")["Tipologia"] === "t"): ?>
                     <p id="visitors">
-                        Numero di visitatori dall'apertura del sito: XXXX<br>
-                        Numero di visitatori attivi adesso sul sito: XXXX
+                        Numero di visitatori dall'apertura del sito: <?= $visitors ?><br>
+                        Numero di visitatori loggati adesso sul sito: <?= $logged_users ?>
                     </p>
                 <?php endif; ?>
             </div>

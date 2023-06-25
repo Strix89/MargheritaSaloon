@@ -15,7 +15,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
  
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
@@ -32,18 +32,34 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'HomeController::index');
-$routes->add('/forgot', 'HomeController::forgot');
-$routes->add('/info', 'HomeController::info');
-$routes->add('/contacts', 'HomeController::contacts');
+$routes->get('/forgot', 'HomeController::forgot');
+$routes->get('/info', 'HomeController::info');
+$routes->get('/contacts', 'HomeController::contacts');
 
+$routes->add('/clienterror', 'HomeController::show404');
 $routes->add('/userdashboard', 'DashboardController::index');
 $routes->add('/logout', 'DashboardController::logout');
+$routes->add('/saloncalendar', 'DashboardController::salonCalendar');
 
 $routes->get('/login', 'HomeController::login');
 $routes->get('/signup', 'HomeController::signup');
+$routes->get('/forgotpass', 'HomeController::forgot');
+$routes->get('/passforgot/(:any)', 'HomeController::resetpswforgot/$1');
+$routes->get('/resetpsw', 'DashboardController::resetPsw');
+$routes->get('/announcements', 'DashboardController::insertAnnounce');
 
 $routes->post('/login', 'HomeController::do_login');
 $routes->post('/signup', 'HomeController::do_signup');
+$routes->post('/forgotpass', 'HomeController::do_forgot');
+$routes->post('/passforgot', 'HomeController::do_resetpswforgot');
+$routes->post('/resetpsw', 'DashboardController::do_resetPsw');
+$routes->post('/announcements', 'DashboardController::do_insertAnnounce');
+
+
+
+$routes->set404Override(function() {
+    return view('layouts/clientError', ['title' => "Client Error"]);
+});
 
 /*
  * --------------------------------------------------------------------

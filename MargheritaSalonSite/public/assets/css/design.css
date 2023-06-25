@@ -1,5 +1,4 @@
 @import url('https://fonts.cdnfonts.com/css/playfair-display');
-
 * {
     margin: 0;
     padding: 0;
@@ -1292,4 +1291,14 @@ tr.border_bottom td {
 .error-message {
     margin: 0 !important;
 }
-  
+.success-box {
+    background-color: #00C851 !important;
+    border: 1px solid #007E33 !important;
+    color: #007E33 !important;
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+  }
+.success-message {
+    margin: 0 !important;
+}
+

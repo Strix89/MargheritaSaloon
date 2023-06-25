@@ -2,27 +2,34 @@
 <html lang="it">
 	<?= view("templates/head", ['title' => $title]) ?>
 	<body>
-		<?= view("templates/header") ?>
+        <header>
+            <div id="logo">
+                <a href="/"><img src="<?php echo base_url();?>assets/logo/Logo.png"></a>
+			</div>
+        </header>
         <div class="login-block">
             <div class="login">
-                <h1>Login</h1>
+                <h1><?php if(session("user") !== null) { echo "Ciao" . session("user")["Username"]; } else { echo "Fatto"; }?></h1>
                 <?php if(isset($error)) { ?>
                     <div class="error-box">
                         <p class="error-message"><?= $error; ?></p>
                     </div>
+                <?php } else if(isset($success)) { ?>
+                    <div class="success-box">
+                        <p class="success-message"><?= $success; ?></p>
+                    </div>
                 <?php } ?>
-                <form method="post" target="_self" action="/login">
-                    <div class="txt_field">
-                        <input type="text" name="username" value="<?php if(isset($username)) { echo $username; }?>" required>
-                        <span></span>
-                        <label>Username o Email</label>
+                <form method="post" target="_self" action="/passforgot" id="rstform">
+                    <div class="txt_field"> 
+                        <input type="password" name="password" id="newpsw" required> 
+                        <span></span> <label>New Password</label>  
                     </div>
+                    <i class="toggle-password" onclick="togglePassword('newpsw', 'toogle1')" id="toogle1">visibility_off</i>
                     <div class="txt_field">
-                        <input type="password" name="psw" id="psw" required>
-                        <span></span>
-                        <label>Password</label>
+                            <input type="password" name="confpassword" id="newrespsw" required>
+                            <span></span>
+                            <label>Retype New Password</label>
                     </div>
-                    <i class="toggle-password" onclick="togglePassword('psw', 'toogle')" id="toogle">visibility_off</i> 
                     <style>
                         .toggle-password {
                             cursor: pointer;
@@ -31,7 +38,7 @@
                             justify-content: center;
                             width: 140px;
                             height: 40px;
-                            padding: 0px 16px;
+                            padding: 0 16px;
                             border-radius: 4px;
                             font-size: 18px;
                             font-weight: 500;
@@ -39,7 +46,6 @@
                             text-align: center;
                             background-color: #4CAF50;
                             color: #fff;
-                            margin-bottom: 15px;
                             border: none;
                             transition: background-color 0.3s ease;
                         }
@@ -60,8 +66,7 @@
                             }
                         }
                     </script>
-                    <div class="forgot_pass"><a href="forgot">Forgot Password?</a></div>
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Cambia Password">
                     <input type="reset" value="Reset">
                 </form>
             </div>
