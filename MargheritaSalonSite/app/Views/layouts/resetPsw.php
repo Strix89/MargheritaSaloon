@@ -4,7 +4,7 @@
 	<body>
 		<?= view("templates/header") ?>
         <div class="login-block">
-            <div class="login">
+            <div class="login" style="margin-top: 40px;">
                 <h1>Reset Password</h1>
                 <?php if(isset($error)) { ?>
                     <div class="error-box">

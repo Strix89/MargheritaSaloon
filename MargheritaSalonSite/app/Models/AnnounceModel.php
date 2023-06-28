@@ -18,6 +18,19 @@ class AnnounceModel extends Model{
     
         return $insertResult;
     }
+
+public function get_Annunci($days){
+        $db = \Config\Database::connect();
+        $builder = $db->table('ANNUNCIO');
+        $builder->select('ANNUNCIO.*, UTENTE.Username');
+        $builder->join('UTENTE', 'UTENTE.Telefono = ANNUNCIO.Telefono');
+        $builder->where('Data >=', date('Y-m-d', strtotime("-$days days")));
+        $builder->where('UTENTE.Telefono IS NOT NULL');
+        $builder->orderBy('Data', 'DESC');
+        $builder->orderBy('Ora', 'DESC');
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 }
 
 ?>

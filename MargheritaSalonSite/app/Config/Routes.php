@@ -46,15 +46,26 @@ $routes->get('/signup', 'HomeController::signup');
 $routes->get('/forgotpass', 'HomeController::forgot');
 $routes->get('/passforgot/(:any)', 'HomeController::resetpswforgot/$1');
 $routes->get('/resetpsw', 'DashboardController::resetPsw');
-$routes->get('/announcements', 'DashboardController::insertAnnounce');
+$routes->get('/postannouncements', 'DashboardController::insertAnnounce');
+$routes->get('/getannouncements', 'DashboardController::getAnnouncements');
+$routes->get('/treatments', 'DashboardController::getTreatements');
+$routes->get('/rmtreatments/(:num)', 'DashboardController::rmTreatment/$1');
+$routes->get('/addproducts', 'DashboardController::addProducts');
+$routes->get('/deleteproduct/(:num)', 'DashboardController::rmProduct/$1');
+$routes->get('/products', 'DashboardController::getProducts');
+$routes->get('/addworks', "DashboardController::addWorks");
+$routes->get('/works', "DashboardController::getWorks");
+$routes->get('/deletework/(:num)', 'DashboardController::rmWork/$1');
 
 $routes->post('/login', 'HomeController::do_login');
 $routes->post('/signup', 'HomeController::do_signup');
 $routes->post('/forgotpass', 'HomeController::do_forgot');
 $routes->post('/passforgot', 'HomeController::do_resetpswforgot');
 $routes->post('/resetpsw', 'DashboardController::do_resetPsw');
-$routes->post('/announcements', 'DashboardController::do_insertAnnounce');
-
+$routes->post('/postannouncements', 'DashboardController::do_insertAnnounce');
+$routes->post('/treatments', 'DashboardController::do_insertTreatment');
+$routes->post('/addproducts', 'DashboardController::do_addProducts');
+$routes->post('/addworks', "DashboardController::do_addWorks");
 
 
 $routes->set404Override(function() {
