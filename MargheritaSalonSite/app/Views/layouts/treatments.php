@@ -30,7 +30,7 @@
                     </div>
                     <div class="durata-rev">
                         <label for="durata">Durata:</label>
-                        <input type="number" min="0" style="width: 40%; padding: 5px; margin-right: 5px;" name="durata" id="durata" placeholder="Durata"> Minuti
+                        <input type="number" min="30" style="width: 40%; padding: 5px; margin-right: 5px;" name="durata" id="durata" placeholder="Durata"> Minuti
                     </div>
                     <div>
                         <label for="descrizione" style="display: block; margin-bottom: 5px;">Descrizione:</label>

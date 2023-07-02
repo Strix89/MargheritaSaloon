@@ -6,22 +6,23 @@
         <div class="panel-block">
             <div class="user-actions">
                 <?php if(session("user")["Tipologia"] === "t"): ?>
+                    <button class="action"><a href="/reviews">RECENSIONI</a></button>
                     <button class="action"><a href="/addworks">LAVORI</a></button>
                     <button class="action"><a href="/postannouncements">ANNUNCI</a></button>
                     <button class="action"><a href="/addproducts">PRODOTTI</a></button>
-                    <button class="action"><a href="./personalCalendar.html">CALENDARIO PERSONALE</a></button>
-                    <button class="action"><a href="./salonCalendar.html">CALENDARIO DEL SALONE</a></button>
+                    <button class="action"><a href="/personalcalendar">CALENDARIO PERSONALE</a></button>
+                    <button class="action"><a href="/saloncalendar">CALENDARIO DEL SALONE</a></button>
                     <button class="action"><a href="/treatments">TRATTAMENTI</a></button>
                     <button class="action"><a href="/resetpsw">RESETTA LA PASSWORD</a></button>
                     <button class="action"><a href="/logout">LOGOUT</a></button>
                 <?php else: ?>
                     <button class="action"><a href="/works">VEDI LAVORI</a></button>
                     <button class="action"><a href="/products">VEDI PRODOTTI</a></button>
-                    <button class="action"><a href="./reviewsPage.html">VEDI RECENSIONI</a></button>
+                    <button class="action"><a href="/reviews">VEDI RECENSIONI</a></button>
                     <button class="action"><a href="/getannouncements">ANNUNCI</a></button>
-                    <button class="action"><a href="./writeRev.html">SCRIVI UNA RECENSIONE</a></button>
-                    <button class="action"><a href="./salonCalendar.html">CALENDARIO DEL SALONE</a></button>
-                    <button class="action"><a href="./makeRes.html">EFFETTUA UNA PRENOTAZIONE</a></button>
+                    <button class="action"><a href="/writerev">SCRIVI UNA RECENSIONE</a></button>
+                    <button class="action"><a href="/saloncalendar">CALENDARIO DEL SALONE</a></button>
+                    <button class="action"><a href="/makeresdate">EFFETTUA UNA PRENOTAZIONE</a></button>
                     <button class="action"><a href="/resetpsw">RESETTA LA PASSWORD</a></button>
                     <button class="action"><a href="/logout">LOGOUT</a></button>
                 <?php endif; ?>

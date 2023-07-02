@@ -39,7 +39,9 @@ $routes->get('/contacts', 'HomeController::contacts');
 $routes->add('/clienterror', 'HomeController::show404');
 $routes->add('/userdashboard', 'DashboardController::index');
 $routes->add('/logout', 'DashboardController::logout');
-$routes->add('/saloncalendar', 'DashboardController::salonCalendar');
+$routes->add('/reviews', 'DashboardController::getReviews');
+$routes->add('/saloncalendar', "DashboardController::getSalonCalendar");
+$routes->add('/personalcalendar', "DashboardController::getPersonalCalendar");
 
 $routes->get('/login', 'HomeController::login');
 $routes->get('/signup', 'HomeController::signup');
@@ -56,6 +58,9 @@ $routes->get('/products', 'DashboardController::getProducts');
 $routes->get('/addworks', "DashboardController::addWorks");
 $routes->get('/works', "DashboardController::getWorks");
 $routes->get('/deletework/(:num)', 'DashboardController::rmWork/$1');
+$routes->get('/makeresdate', "DashboardController::makeReservationDate");
+$routes->get('/rmreservation/(:num)/(:any)/(:any)/(:any)', 'dashboardController::removeRes/$1/$2/$3/$4');
+$routes->get('/writerev', "DashboardController::writeReview");
 
 $routes->post('/login', 'HomeController::do_login');
 $routes->post('/signup', 'HomeController::do_signup');
@@ -66,6 +71,9 @@ $routes->post('/postannouncements', 'DashboardController::do_insertAnnounce');
 $routes->post('/treatments', 'DashboardController::do_insertTreatment');
 $routes->post('/addproducts', 'DashboardController::do_addProducts');
 $routes->post('/addworks', "DashboardController::do_addWorks");
+$routes->post('/makeresdate', "DashboardController::do_makeReservationDate");
+$routes->post('/makeres', "DashboardController::do_makeReservation");
+$routes->post('/writerev', "DashboardController::do_writeReview");
 
 
 $routes->set404Override(function() {

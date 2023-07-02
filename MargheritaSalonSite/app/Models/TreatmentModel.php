@@ -41,6 +41,35 @@ class TreatmentModel extends Model{
 
         return $query ? true : false;
     }
+
+    public function getJustTreatments(){
+        $db = \Config\Database::connect();
+
+        $query = $db->table('TRATTAMENTO');
+        $query->select('TRATTAMENTO.*');
+        $results = $query->get()->getResultArray();
+        return $results;
+    }
+
+    public function getTrattamentiTitoliEDurata($trattamenti_ids) {
+        $db = \Config\Database::connect();
+        
+        $query = $db->table('TRATTAMENTO');
+        $query->whereIn('ID', $trattamenti_ids);
+        $query->select('Titolo, Durata, Prezzo');
+        $results = $query->get()->getResultArray();
+    
+        $titoli = array_column($results, 'Titolo');
+        $durata_complessiva = 0;
+        $prezzo_complessivo = 0;
+        foreach ($results as $result) {
+            $durata = strtotime($result['Durata']) - strtotime('00:00:00');
+            $durata_complessiva += $durata;
+            $prezzo_complessivo += intval($result['Prezzo']);
+        }
+    
+        return array('Titoli' => $titoli, 'Durata' => gmdate('H:i:s', $durata_complessiva), "Prezzo" => $prezzo_complessivo);
+    }
 }
 
 ?>

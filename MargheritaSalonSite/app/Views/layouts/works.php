@@ -4,6 +4,7 @@
 	<body>
 		<?= view("templates/header") ?>
         <div class="works-block"  style="height: 100%; border-radius: 20px;">
+                <?php if(isset($result)): ?>
                     <?php foreach($result as $row): ?>
                         <div class="work-block">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -27,7 +28,12 @@
                             </p>
                         </div>
                     <?php endforeach; ?>
+                <?php elseif(isset($error)): ?>
+                    <div class="error-box" style="margin-top: 5px; text-align: center;">
+                        <p class="error-message"><?= $error ?></p>
                     </div>
+                <?php endif; ?>
+        </div>
         <?= view("templates/footer") ?>
     </body>
 </html>

@@ -9,7 +9,10 @@ class ProductModel extends Model{
 
     public function getProducts() {
         $db = \Config\Database::connect();
-        $query = $db->query('SELECT p."ID", p."Nome", p."Descrizione", p."Prezzo", ARRAY_AGG(i."Nome") as "NomiImmagini" FROM public."PRODOTTO" p LEFT JOIN public."IMMAGINE_P" i ON p."ID" = i."ID_P" GROUP BY p."ID", p."Nome", p."Descrizione", p."Prezzo"');
+        $query = $db->query('SELECT p."ID", p."Nome", p."Descrizione", p."Prezzo", ARRAY_AGG(i."Nome") as "NomiImmagini" 
+                                FROM public."PRODOTTO" p 
+                                LEFT JOIN public."IMMAGINE_P" i ON p."ID" = i."ID_P" 
+                                GROUP BY p."ID", p."Nome", p."Descrizione", p."Prezzo"');
         
         $result = $query->getResultArray();
         return $result;

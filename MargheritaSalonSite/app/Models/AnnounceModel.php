@@ -19,7 +19,7 @@ class AnnounceModel extends Model{
         return $insertResult;
     }
 
-public function get_Annunci($days){
+    public function get_Annunci($days){
         $db = \Config\Database::connect();
         $builder = $db->table('ANNUNCIO');
         $builder->select('ANNUNCIO.*, UTENTE.Username');
