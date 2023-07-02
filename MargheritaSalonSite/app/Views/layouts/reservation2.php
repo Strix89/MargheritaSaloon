@@ -32,9 +32,9 @@
                             <div class="trattamento-rev">
                                 <label for="trattamento" style="display: block; margin-bottom: 8px;">Trattamento:</label>
                                 <select id="trattamento-option" name="trattamento[]" multiple size="3" style="display: block; width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                    <?php foreach($treatments as $treatment): ?>
-                                        <option value="<?= $treatment["ID"] ?>" style="padding: 8px; background-color: #f9f9f9;"><?php echo $treatment["Titolo"]; ?></option>
-                                    <?php endforeach; ?>
+                                    <?php for($i = 0; $i < count($treatments); $i++): ?>
+                                        <option value="<?= $treatments[$i]["ID"] ?>" style="padding: 8px; background-color: #f9f9f9;" <?php echo ($i == 0 ?  "selected" : ""); ?> ><?php echo $treatments[$i]["Titolo"]; ?></option>
+                                    <?php endfor; ?> 
                                 </select>
                             </div>
                             <div class="operatore-rev">

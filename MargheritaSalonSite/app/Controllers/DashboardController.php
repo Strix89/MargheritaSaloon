@@ -574,6 +574,9 @@ class DashboardController extends BaseController
         $ora = $this->request->getPost("ora");
         $treats = $this->request->getPost("trattamento");
 
+        if(!is_array($treats)){
+            $treats = array($treats);
+        }
         if(count($treats) > 3){
             return view("layouts/reservation", ['title' => "Prenota", "error" => "Non puoi prenotare più di 3 trattamenti!", "orari" => $orari, "date" => $sequenceDate]);
         }
@@ -619,7 +622,8 @@ class DashboardController extends BaseController
 
             return redirect()->to(site_url('/saloncalendar'));
         } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
-            return view("layouts/reservation", ['title' => "Prenota", "error" => "Hai già una prenotazione per l'orario scelto!", "orari" => $orari, "date" => $sequenceDate]);
+            print_r($e->getMessage());
+            //return view("layouts/reservation", ['title' => "Prenota", "error" => "Hai già una prenotazione per l'orario scelto!", "orari" => $orari, "date" => $sequenceDate]);
         }
     }
 

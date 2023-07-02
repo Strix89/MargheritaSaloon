@@ -6,10 +6,12 @@ use \Datetime;
 class ReservationModel extends Model{
     public function getReservations($telefono = null, $days = null, $data = null, $mode = false) {
         $builder = $this->db->table('PRENOTAZIONE');
-        $builder->select('PRENOTAZIONE.*, UTENTE_C.Username as Cliente_Username, UTENTE_P.Username as Personale_Username, array_agg(public."TRATTAMENTO"."Titolo") as "Titoli", array_agg(public."TRATTAMENTO"."Durata") as "Durate"');
+        $builder->select('PRENOTAZIONE.*, UTENTE_C.Username as Cliente_Username, UTENTE_P.Username as Personale_Username, 
+            array_agg(public."TRATTAMENTO"."Titolo") as "Titoli", array_agg(public."TRATTAMENTO"."Durata") as "Durate"');
         $builder->join('UTENTE as UTENTE_C', 'PRENOTAZIONE.Telefono_C = UTENTE_C.Telefono', 'left');
         $builder->join('UTENTE as UTENTE_P', 'PRENOTAZIONE.Telefono_P = UTENTE_P.Telefono', 'left');
-        $builder->join('PRENOTAZIONE_TRATTAMENTO', 'PRENOTAZIONE.Telefono_C = PRENOTAZIONE_TRATTAMENTO.Telefono_C AND PRENOTAZIONE.Data_P = PRENOTAZIONE_TRATTAMENTO.Data_P AND PRENOTAZIONE.Ora_P = PRENOTAZIONE_TRATTAMENTO.Ora_P', 'left');
+        $builder->join('PRENOTAZIONE_TRATTAMENTO', 'PRENOTAZIONE.Telefono_C = PRENOTAZIONE_TRATTAMENTO.Telefono_C AND 
+            PRENOTAZIONE.Data_P = PRENOTAZIONE_TRATTAMENTO.Data_P AND PRENOTAZIONE.Ora_P = PRENOTAZIONE_TRATTAMENTO.Ora_P', 'left');
         $builder->join('TRATTAMENTO', 'PRENOTAZIONE_TRATTAMENTO.ID_T = TRATTAMENTO.ID', 'left');
     
         if ($telefono !== null && $mode === false) {
