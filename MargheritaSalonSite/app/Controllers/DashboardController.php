@@ -622,8 +622,7 @@ class DashboardController extends BaseController
 
             return redirect()->to(site_url('/saloncalendar'));
         } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
-            print_r($e->getMessage());
-            //return view("layouts/reservation", ['title' => "Prenota", "error" => "Hai già una prenotazione per l'orario scelto!", "orari" => $orari, "date" => $sequenceDate]);
+            return view("layouts/reservation", ['title' => "Prenota", "error" => "Hai già una prenotazione per l'orario scelto!", "orari" => $orari, "date" => $sequenceDate]);
         }
     }
 
