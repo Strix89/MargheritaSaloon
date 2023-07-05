@@ -1,7 +1,7 @@
 <header>
 			<div class="left-bar">
-				<a href="/info">Informazioni</a>
-				<a href="/contacts">Contatti</a>
+				<a href="<?php echo base_url();?>info">Informazioni</a>
+				<a href="<?php echo base_url();?>contacts">Contatti</a>
 			</div>
             <div id="logo">
                 <a href="/"><img src="<?php echo base_url();?>assets/logo/Logo.png"></a>
